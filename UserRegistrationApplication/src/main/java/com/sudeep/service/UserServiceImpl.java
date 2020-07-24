@@ -4,23 +4,28 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sudeep.entity.CityEntity;
 import com.sudeep.entity.CountryEntity;
 import com.sudeep.entity.StateEntity;
 import com.sudeep.entity.UserEntity;
 import com.sudeep.model.User;
+import com.sudeep.model.UserLogin;
 import com.sudeep.repository.CityRepository;
 import com.sudeep.repository.CountryRepository;
 import com.sudeep.repository.StateRepository;
+import com.sudeep.repository.UserLoginRepository;
 import com.sudeep.repository.UserRepository;
-
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	private UserLoginRepository loginRepo;
 	private CountryRepository countryRepository;
 	private StateRepository stateRepository;
 	private CityRepository cityRepository;
@@ -31,6 +36,7 @@ public class UserServiceImpl implements UserService {
 		BeanUtils.copyProperties(user, entity);
 		if (user != null)
 			entity.setAccountStatus("locked");
+		entity.setPassword(RandomStringUtils.randomAlphanumeric(6));
 		UserEntity savedEntity = userRepository.save(entity);
 		return (savedEntity != null);
 	}
@@ -82,6 +88,14 @@ public class UserServiceImpl implements UserService {
 		});
 
 		return citiesMap;
+	}
+
+	@Override
+	public UserLogin checkEmail(String email) {
+		UserEntity entity = loginRepo.findByEmail(email);
+		UserLogin userLogin = new UserLogin();
+		BeanUtils.copyProperties(entity, userLogin);
+		return userLogin;
 	}
 
 }

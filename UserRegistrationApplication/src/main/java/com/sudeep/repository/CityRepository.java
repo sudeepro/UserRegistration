@@ -9,7 +9,6 @@ import com.sudeep.entity.CityEntity;
 
 public interface CityRepository extends JpaRepository<CityEntity, Integer> {
 
-	@Query("SELECT CITY FROM CITY_MASTER")
 	List<CityEntity> findAllByStateId(Integer stateId);
 
 }

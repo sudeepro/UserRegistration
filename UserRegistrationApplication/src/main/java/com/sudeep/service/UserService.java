@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.sudeep.model.User;
+import com.sudeep.model.UserLogin;
 
 @Service
 public interface UserService {
@@ -20,5 +21,7 @@ public interface UserService {
 	Map<Integer, String> getStatesByCountryId(Integer countryId);
 
 	Map<Integer, String> getCitiesByStateId(Integer stateId);
+
+	public UserLogin checkEmail(String email);
 
 }

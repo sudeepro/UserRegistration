@@ -10,7 +10,7 @@ import com.sudeep.entity.UserEntity;
 
 public interface StateRepository extends JpaRepository<UserEntity, Integer> {
 
-	@Query("SELECT STATE FROM CITY_MASTER")
+	
 	List<StateEntity> findAllByCountryId(Integer countryId);
 
 }

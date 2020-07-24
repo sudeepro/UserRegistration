@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sudeep.model.User;
+import com.sudeep.repository.UserRepository;
 import com.sudeep.service.UserService;
 
 /**
@@ -70,4 +71,5 @@ public class UserController {
 	public Map<Integer, String> getCitiesByStateId(@RequestParam("sid") Integer stateId) {
 		return service.getCitiesByStateId(stateId);
 	}
+
 }

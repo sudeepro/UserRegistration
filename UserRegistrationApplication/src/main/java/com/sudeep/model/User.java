@@ -11,7 +11,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private long phNo;
+	private Long phNo;
 	private LocalDate dob;
 	private String gender;
 	private String country;

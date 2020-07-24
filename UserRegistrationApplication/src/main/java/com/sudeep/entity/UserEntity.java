@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -80,5 +81,9 @@ public class UserEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "UPDATED_DATE")
 	private Date updatedDate;
+
+	@Version
+	@Column(name = "VERSION")
+	private Long version;
 
 }
