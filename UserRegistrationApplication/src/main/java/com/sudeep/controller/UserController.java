@@ -55,7 +55,7 @@ public class UserController {
 		} else {
 			service.saveUser(user);
 			return "redirect:/confirmation";
-
+//defrgtdyukilo;p'p;loukiyjut
 		}
 
 	}
